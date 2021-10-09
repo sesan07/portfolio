@@ -1,0 +1,81 @@
+:host {
+  --image-width: 1248px; //  The actual size of main project images is 1248 * 702
+  --card-width: 800px;
+  --card-width-half: calc(var(--card-width) / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(var(--image-width) + var(--card-width-half));
+}
+
+.main-project-card {
+  max-width: var(--card-width);
+  margin-bottom: 16px;
+}
+
+.main-project-content {
+  max-width: 100%;
+}
+
+.main-project-content-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-sizing: border-box;
+}
+
+.main-project-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.main-project-child {
+  display: inline-flex;
+  align-items: center;
+  width: 280px;
+  min-height: 100px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 2px solid var(--primary);
+  background-color: var(--background);
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) s */
+//@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) m */
+//@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) l */
+//@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) xl */
+@media only screen and (min-width: 1200px) {
+  :host {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%
+  }
+
+  .main-project-content {
+    max-width: 80%;
+  }
+
+  .main-project-card {
+    width: var(--card-width);
+    position: absolute;
+    left: 0;
+    margin-bottom: 0;
+  }
+
+  .main-project-children {
+    margin-top: -24px;
+  }
+
+}

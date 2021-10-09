@@ -1,0 +1,126 @@
+:host {
+  position: fixed;
+  height: var(--header-height);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 32px;
+  background-color: var(--primary);
+  color: var(--text-color-dark);
+  border-bottom: 2px solid var(--background);
+  z-index: 5;
+  top: 0;
+  font-family: var(--title-font-family);
+  transition: height 0.2s ease-out;
+}
+
+.header-title {
+  font-size: 24px;
+}
+
+.header-nav {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: calc(calc(var(--common-title-height) + 8px) * 3);
+  overflow: hidden;
+  transition: height 0.2s ease-out;
+
+  &.hidden {
+    height: 0;
+  }
+}
+
+.header-nav-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: var(--primary);
+}
+
+.header-nav-list-item {
+  display: inline-block;
+}
+
+.header-nav-link {
+  display: inline-block;
+  font-size: 20px;
+  padding-left: 32px;
+  width: 100%;
+  line-height: calc(var(--common-title-height));
+  box-sizing: border-box;
+  border: 2px dashed transparent;
+
+  &:hover {
+    color: var(--accent);
+    border: 2px dashed var(--accent);
+  }
+}
+
+.header-menu-btn {
+  display: inline-flex;
+  background-color: transparent;
+  border: none; /* Remove borders */
+  padding: 8px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+
+  &:hover {
+    outline: 2px dashed var(--accent);
+  }
+}
+
+.header-menu-icon {
+  height: 32px;
+  width: 32px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+  .header-title {
+    font-size: 32px;
+  }
+
+  .header-nav-link {
+    font-size: 24px;
+  }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+//@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .header-menu-btn {
+    display: none;
+  }
+
+  .header-nav {
+    position: relative;
+    top: 0;
+    width: auto;
+    height: calc(var(--common-title-height) + 4px);
+
+    &.hidden {
+      height: calc(var(--common-title-height) + 4px);
+    }
+  }
+
+  .header-nav-list {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .header-nav-link {
+    padding: 0 8px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+//@media only screen and (min-width: 1200px) {...}

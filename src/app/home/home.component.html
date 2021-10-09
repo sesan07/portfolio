@@ -1,0 +1,41 @@
+<section #about class="about-section">
+    <app-title class="main-title">Samuel Esan</app-title>
+    <app-card class="about-section-content"
+              cardTitle="About Me"
+              [description]="description"
+              [githubLink]="githubLink"
+              [resumeLink]="resumeLink"
+              [showHeaderDiagonal]="true">
+    </app-card>
+</section>
+
+<section #webProjects>
+    <app-title class="secondary-title">Web Projects</app-title>
+    <div class="main-projects-section-content">
+        <app-main-project *ngFor="let project of projectService.mainProjects"
+                          [project]="project">
+        </app-main-project>
+    </div>
+</section>
+
+<section #otherProjects>
+    <app-title class="secondary-title">Other Projects</app-title>
+    <div class="other-projects-section-content">
+        <app-card class="other-project" *ngFor="let project of projectService.otherProjects"
+                  [cardTitle]="project.name"
+                  [description]="project.summary"
+                  [imageSrc]="project.cardImageSrc"
+                  [badges]="project.badges"
+                  [githubLink]="project.githubLink"
+                  [openLink]="project.openLink"
+                  [year]="project.year"
+                  [showHeaderDiagonal]="true"
+                  [showFooterDiagonal]="true">
+        </app-card>
+    </div>
+</section>
+
+<section class="footer-section">
+    <span class="footer-text">Designed & Developed by Samuel Esan, 2021</span>
+    <a class="footer-text email" href="mailto:sesan@upei.ca">sesan@upei.ca</a>
+</section>

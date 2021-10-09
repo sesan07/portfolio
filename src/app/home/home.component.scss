@@ -1,0 +1,113 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 64px;
+  margin-top: var(--header-height);
+  padding: 0 8px;
+}
+
+app-title {
+  margin-bottom: 32px;
+  width: 100%;
+  font-family: var(--title-font-family);
+}
+
+.main-title {
+  font-size: 40px;
+}
+
+.secondary-title {
+  font-size: 32px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-section {
+  min-height: calc(100vh - var(--header-height));
+}
+
+.about-section-content {
+  max-width: 1000px;
+}
+
+.main-projects-section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 64px;
+  width: 100%;
+}
+
+.other-projects-section-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 64px;
+}
+
+.other-project {
+  max-width: 500px;
+}
+
+.footer-section {
+  gap: 16px;
+  padding: 0 16px 16px 16px;
+  box-sizing: border-box;
+  font-family: var(--title-font-family)
+}
+
+.footer-text {
+  width: 400px;
+  text-align: center;
+}
+
+.footer-text.email {
+  text-decoration: underline;
+
+  &:hover {
+    outline: 2px dashed var(--accent);
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) s */
+//@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) m */
+@media only screen and (min-width: 768px) {
+  :host {
+    padding: 0 32px;
+    row-gap: 128px;
+  }
+
+  .main-title {
+    font-size: 64px;
+  }
+
+  .secondary-title {
+    font-size: 40px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) l */
+@media only screen and (min-width: 992px) {
+  .main-title {
+    font-size: 80px;
+  }
+
+  .secondary-title {
+    font-size: 64px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) xl */
+//@media only screen and (min-width: 1200px) {...}
+
+/* Extra large devices (large laptops and desktops, 1600px and up) xl */
+//@media only screen and (min-width: 1600px) {...}

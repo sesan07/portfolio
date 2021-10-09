@@ -1,0 +1,34 @@
+<div class="card-header-wrapper">
+    <div *ngIf="showHeaderDiagonal" class="card-diagonal-top-left"></div>
+    <span class="card-title">{{ cardTitle }}</span>
+</div>
+<div class="card-image-wrapper">
+    <img *ngIf="imageSrc" class="card-image" [src]="imageSrc" alt="Project Image">
+</div>
+<div class="card-content" [class.bottom-border]="!badges">
+    <span>{{ description }}</span>
+    <div *ngIf="githubLink || openLink || resumeLink" class="card-links">
+        <a *ngIf="githubLink" class="card-link" target="_blank" [href]="githubLink">
+            <img class="card-link-image" src="assets/image/github.png" alt="Github Icon">
+            <span class="card-link-text">Github</span>
+        </a>
+        <a *ngIf="openLink" class="card-link" target="_blank" [href]="openLink">
+            <img class="card-link-image" src="assets/image/link.png" alt="Project Link Icon">
+            <span class="card-link-text">Open</span>
+        </a>
+        <a *ngIf="resumeLink" class="card-link" target="_blank" [href]="resumeLink">
+            <img class="card-link-image" src="assets/image/resume.png" alt="Resume Icon">
+            <span class="card-link-text">Resume</span>
+        </a>
+    </div>
+</div>
+<div *ngIf="badges" class="card-footer-wrapper">
+    <span class="card-footer">
+        <span class="badge-wrapper">
+            <img class="badge" *ngFor="let badge of badges" [src]="getBadgeIcon(badge)" [title]="badge"
+                 [alt]="badge + ' Icon'">
+            {{ year }}
+        </span>
+    </span>
+    <span *ngIf="showFooterDiagonal" class="card-diagonal-bottom-right"></span>
+</div>

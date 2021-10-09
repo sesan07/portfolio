@@ -1,0 +1,15 @@
+<app-card class="main-project-card"
+          [cardTitle]="project.name"
+          [description]="project.summary"
+          [badges]="project.badges"
+          [githubLink]="project.githubLink"
+          [openLink]="project.openLink"
+          [year]="project.year"
+          [showHeaderDiagonal]="true">
+</app-card>
+<div class="main-project-content">
+    <img class="main-project-content-image" [src]="project.cardImageSrc" alt="Project Image">
+    <div class="main-project-children">
+        <div class="main-project-child" *ngFor="let description of project.shortDescriptions">{{ description }}</div>
+    </div>
+</div>

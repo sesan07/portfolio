@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+:root {
+  --primary: #02D8F3;
+  --accent: #F8EF02;
+  --background: #1f1f1f;
+  --text-color-dark: #313131;
+  --text-color-light: #c2c2c2;
+  --title-font-family: Audiowide, sans-serif;
+  --header-height: 100px;
+  --common-title-height: 40px;
+}
+html, body {
+  margin: 0;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--accent);    /* color of the scroll thumb */
+}
+
+html {
+  scrollbar-width: thin;          /* "auto" or "thin" */
+  scrollbar-color: var(--accent) var(--background);   /* scroll thumb and track */
+}
+
+body {
+  min-height: calc(100vh - var(--header-height));
+  width: 100%;
+  background-color: var(--background);
+  color: var(--text-color-light);
+  font-family: Arvo, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shrink-header {
+  height: calc(var(--header-height) - 32px) !important;
+}
+
+/* Extra small devices (phones, 600px and down) xs */
+//@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) s */
+//@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) m */
+//@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) l */
+//@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) xl */
+//@media only screen and (min-width: 1200px) {...}
