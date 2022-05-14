@@ -5,6 +5,7 @@ export enum Badge {
     DESKTOP = 'Desktop',
     KOTLIN = 'Kotlin',
     NG_ZORRO = 'NG-Zorro',
+    NGX_FORMLY = 'NGX-Formly',
     PYTHON = 'Python',
     TAILWIND = 'Tailwind CSS',
     UNITY = 'Unity',

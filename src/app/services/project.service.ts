@@ -7,6 +7,24 @@ import { Badge, Project } from './project.service.types';
 export class ProjectService {
     mainProjects: Project[] = [
         {
+            name: 'Formly Editor',
+            summary: 'An Editor for creating JSON based ngx-formly forms',
+            shortDescriptions: [
+                'Import, export or create new JSON based forms and models',
+                'Style components using grid and flex options. Also supports custom classes',
+                'Supports component drag and drop',
+                'Configure the editor app to support custom ngx-formly components',
+            ],
+            cardImageSrc: './assets/image/formly-editor.png',
+            badges: [
+                Badge.ANGULAR,
+                Badge.NGX_FORMLY,
+            ],
+            githubLink: 'https://github.com/sesan07/formly-editor',
+            openLink: 'https://sesan07.github.io/formly-editor',
+            year: 2022
+        },
+        {
             name: 'Vizman',
             summary: 'A website that allows the user to combine multiple 2D visualizers, static images and gifs to create... chaotic art',
             shortDescriptions: [

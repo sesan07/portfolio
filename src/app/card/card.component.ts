@@ -33,6 +33,8 @@ export class CardComponent {
                 return 'assets/image/kotlin.png';
             case Badge.NG_ZORRO:
                 return 'assets/image/ng-zorro.png';
+            case Badge.NGX_FORMLY:
+                return 'assets/image/ngx-formly.png';
             case Badge.PYTHON:
                 return 'assets/image/python.png';
             case Badge.TAILWIND:
