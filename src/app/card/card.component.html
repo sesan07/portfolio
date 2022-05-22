@@ -6,7 +6,7 @@
     <img *ngIf="imageSrc" class="card-image" [src]="imageSrc" alt="Project Image">
 </div>
 <div class="card-content" [class.bottom-border]="!badges">
-    <span>{{ description }}</span>
+    <p class="card-description">{{ description }}</p>
     <div *ngIf="githubLink || openLink || resumeLink" class="card-links">
         <a *ngIf="githubLink" class="card-link" target="_blank" [href]="githubLink">
             <img class="card-link-image" src="assets/image/github.png" alt="Github Icon">
