@@ -20,8 +20,7 @@ export class ProjectService {
                 Badge.ANGULAR,
                 Badge.NGX_FORMLY,
             ],
-            githubLink: 'https://github.com/sesan07/formly-editor',
-            openLink: 'https://sesan07.github.io/formly-editor',
+            openLink: 'https://formly-editor.web.app',
             year: 2022
         },
         {
