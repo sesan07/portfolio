@@ -55,8 +55,8 @@ export class ProjectService {
                 Badge.ANGULAR,
                 Badge.TAILWIND
             ],
-            githubLink: '',
-            openLink: 'https://footy-chan.web.app/home',
+            githubLink: 'https://github.com/sesan07/football-site',
+            openLink: 'https://footy-chan.web.app/',
             year: 2020
         },
     ]
