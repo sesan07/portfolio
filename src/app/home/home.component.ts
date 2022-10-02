@@ -18,14 +18,9 @@ export class HomeComponent implements OnInit {
     description: string = `
         Hi. I'm Sam. I write code.
 
-        I started out by making video games using Unity3D and C#.
-        After making some games, I decided to try my hand at making native android apps with Android Studio and Kotlin.
-        For my graduation project I worked on a library report management tool (based on COUNTER5) using Python and PyQT for the GUI.
-
-        Since graduating, I now work in web development of Angular 2 based apps.
-        I work with technologies like NodeJS, Hapi, RAML, Molecular and Oracle for back end development.
-        I also work with the Elasticsearch, Logastash and Kibaba stack for search.
-        My job involves building dockerized micro-services and apps using Docker Compose.
+        I work in web development of Angular 2 based apps.
+        I work with technologies like NodeJS, Docker, Hapi, RAML, Molecular, Oracle and the ELK stack.
+        My job involves building dockerized micro-services, APIs and apps using Docker Compose.
 
         I enjoy learning new things by working on personal projects whenever I get the chance!
     `
