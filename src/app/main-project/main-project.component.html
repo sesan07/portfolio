@@ -8,7 +8,7 @@
           [showHeaderDiagonal]="true">
 </app-card>
 <div class="main-project-content">
-    <img class="main-project-content-image" [src]="project.cardImageSrc" alt="Project Image">
+    <advanced-image [cldImg]="image"  [alt]="project.name + ' Image'"></advanced-image>
     <div class="main-project-children">
         <div class="main-project-child" *ngFor="let description of project.shortDescriptions">{{ description }}</div>
     </div>

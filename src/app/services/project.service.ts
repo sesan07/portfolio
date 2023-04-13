@@ -15,7 +15,7 @@ export class ProjectService {
                 'Supports component drag and drop',
                 'Configure the editor app to support custom ngx-formly components',
             ],
-            cardImageSrc: './assets/image/formly-editor.png',
+            cardImageSrc: 'portfolio/formly-editor',
             badges: [
                 Badge.ANGULAR,
                 Badge.NGX_FORMLY,
@@ -32,7 +32,7 @@ export class ProjectService {
                 'Multiple \'Emitters\' can be used spawn multiple \'Entities\' at set intervals',
                 'Allows the user to control the speed of gifs',
             ],
-            cardImageSrc: './assets/image/vizman.png',
+            cardImageSrc: 'portfolio/vizman',
             badges: [
                 Badge.ANGULAR,
                 Badge.NG_ZORRO,
@@ -50,7 +50,7 @@ export class ProjectService {
                 'Uses a favorites system and localstorage to display preferred items above others',
                 'Uses Tailwind CSS for styling',
             ],
-            cardImageSrc: './assets/image/footy-chan.png',
+            cardImageSrc: 'portfolio/footy-chan',
             badges: [
                 Badge.ANGULAR,
                 Badge.TAILWIND
@@ -64,7 +64,7 @@ export class ProjectService {
         {
             name: 'UPEI Panthers (Unofficial)',
             summary: 'An app that provides a native android experience for viewing fixtures and news from the UPEI Panthers website',
-            cardImageSrc: './assets/image/upei-panthers.png',
+            cardImageSrc: 'portfolio/upei-panthers',
             badges: [
                 Badge.ANDROID,
                 Badge.KOTLIN
@@ -76,7 +76,7 @@ export class ProjectService {
         {
             name: 'COUNTER 5 Report Tool',
             summary: 'A tool for libraries to harvest and manage their COUNTER-compliant usage reports',
-            cardImageSrc: './assets/image/counter5.png',
+            cardImageSrc: 'portfolio/counter-5',
             badges: [
                 Badge.DESKTOP,
                 Badge.PYTHON
@@ -87,7 +87,7 @@ export class ProjectService {
         {
             name: 'Craball',
             summary: 'A mobile game where you play as a quadrupedal mech, tasked with destroying the zombified humanoid robots that have invaded earth',
-            cardImageSrc: './assets/image/craball.png',
+            cardImageSrc: 'portfolio/craball',
             badges: [
                 Badge.ANDROID,
                 Badge.UNITY,
@@ -99,7 +99,7 @@ export class ProjectService {
         {
             name: 'Tube Ride',
             summary: 'My take on the endless-runner genre of mobiles game that involves avoiding obstacles in an endless curving tube',
-            cardImageSrc: './assets/image/tuberide.png',
+            cardImageSrc: 'portfolio/tube-ride',
             badges: [
                 Badge.ANDROID,
                 Badge.UNITY,

@@ -3,7 +3,7 @@
     <span class="card-title">{{ cardTitle }}</span>
 </div>
 <div class="card-image-wrapper">
-    <img *ngIf="imageSrc" class="card-image" [src]="imageSrc" alt="Project Image">
+    <advanced-image *ngIf="image" [cldImg]="image"  [alt]="cardTitle + ' Image'"></advanced-image>
 </div>
 <div class="card-content" [class.bottom-border]="!badges">
     <p class="card-description">{{ description }}</p>

@@ -1,5 +1,17 @@
 :host {
   background-color: var(--background);
+
+  & ::ng-deep {
+        advanced-image img {
+            height: 300px;
+            vertical-align: middle;
+            transition: transform .2s ease-out;
+          
+            &:hover {
+              transform: scale(1.1);
+            }
+        }
+    }
 }
 
 .card-header-wrapper, .card-footer-wrapper {

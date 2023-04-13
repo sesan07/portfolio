@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { CloudinaryImage } from '@cloudinary/url-gen';
+import { CloudinaryService } from '../services/cloudinary.service';
+
 import { Badge } from '../services/project.service.types';
 
 @Component({
@@ -18,6 +21,16 @@ export class CardComponent {
     @Input() year?: number;
     @Input() showHeaderDiagonal?: boolean;
     @Input() showFooterDiagonal?: boolean;
+
+    public image?: CloudinaryImage;
+    constructor(private _cldService: CloudinaryService) {
+    }
+
+    ngOnInit(): void {
+        if (this.imageSrc) {
+            this.image = this._cldService.getImage(this.imageSrc);
+        }
+    }
 
     getBadgeIcon(badge: Badge): string {
         switch (badge) {
