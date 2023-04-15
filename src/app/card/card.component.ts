@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 import { CloudinaryService } from '../services/cloudinary.service';
 
@@ -8,6 +8,7 @@ import { Badge } from '../app.types';
     selector: 'app-card',
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
     @Input() cardTitle: string = '';

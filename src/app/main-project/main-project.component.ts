@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 
 import { CloudinaryService } from '../services/cloudinary.service';
@@ -8,6 +8,7 @@ import { Project } from '../app.types';
     selector: 'app-main-project',
     templateUrl: './main-project.component.html',
     styleUrls: ['./main-project.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainProjectComponent implements OnInit {
     @Input() project!: Project;
