@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 import { CloudinaryService } from '../services/cloudinary.service';
 
@@ -10,7 +10,7 @@ import { Badge } from '../app.types';
     styleUrls: ['./card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
     @Input() cardTitle: string = '';
     @Input() description: string = '';
     @Input() githubLink?: string;
