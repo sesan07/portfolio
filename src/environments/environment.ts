@@ -2,9 +2,20 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment: any = {
+import { IEnvironment } from './environment.types';
+
+export const environment: IEnvironment = {
     production: false,
-    cloudinaryCloudName: 'dsimwsznp',
+    cloudinary: {
+        cloud: {
+            cloudName: 'dsimwsznp',
+        },
+    },
+    firebase: {
+        apiKey: 'AIzaSyC4fciWZsKefzAxFgw7V_3DjYFytiYxYiM',
+        projectId: 'samuel-esan-v2',
+        appId: '1:664624124219:web:97b8df4e5e661875d2671e',
+    },
 };
 
 /*

@@ -5,14 +5,15 @@
               [description]="description"
               [githubLink]="githubLink"
               [resumeLink]="resumeLink"
-              [showHeaderDiagonal]="true">
+              [showHeaderDiagonal]="true"
+              [showFooterDiagonal]="true">
     </app-card>
 </section>
 
 <section #webProjects>
     <app-title class="secondary-title">Web Projects</app-title>
     <div class="main-projects-section-content">
-        <app-main-project *ngFor="let project of projectService.mainProjects"
+        <app-main-project *ngFor="let project of mainProjects$ | async"
                           [project]="project">
         </app-main-project>
     </div>
@@ -21,7 +22,7 @@
 <section #otherProjects>
     <app-title class="secondary-title">Other Projects</app-title>
     <div class="other-projects-section-content">
-        <app-card class="other-project" *ngFor="let project of projectService.otherProjects"
+        <app-card class="other-project" *ngFor="let project of otherProjects$ | async"
                   [cardTitle]="project.name"
                   [description]="project.summary"
                   [imageSrc]="project.cardImageSrc"

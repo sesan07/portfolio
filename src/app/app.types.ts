@@ -1,13 +1,13 @@
 export enum Badge {
     ANDROID = 'Android',
     ANGULAR = 'Angular',
-    C_SHARP = 'C#',
+    C_SHARP = 'C-Sharp',
     DESKTOP = 'Desktop',
     KOTLIN = 'Kotlin',
     NG_ZORRO = 'NG-Zorro',
     NGX_FORMLY = 'NGX-Formly',
     PYTHON = 'Python',
-    TAILWIND = 'Tailwind CSS',
+    TAILWIND = 'Tailwind-CSS',
     UNITY = 'Unity',
 }
 

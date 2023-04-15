@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 
-import { Project } from '../services/project.service.types';
 import { CloudinaryService } from '../services/cloudinary.service';
+import { Project } from '../app.types';
 
 @Component({
     selector: 'app-main-project',
     templateUrl: './main-project.component.html',
-    styleUrls: ['./main-project.component.scss']
+    styleUrls: ['./main-project.component.scss'],
 })
 export class MainProjectComponent implements OnInit {
     @Input() project!: Project;

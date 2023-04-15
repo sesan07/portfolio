@@ -1,11 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService } from '../services/project.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { FirebaseService } from '../services/firebase.service';
+import { Project } from '../app.types';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
     @ViewChild('about') aboutElementRef!: ElementRef<HTMLElement>;
@@ -14,7 +18,7 @@ export class HomeComponent implements OnInit {
 
     headerHeight: number = 100;
     githubLink: string = 'https://github.com/sesan07';
-    resumeLink: string = 'https://drive.google.com/file/d/1stGmZ8Y4VM-zbg-MFIGm2MrDHn6oLO7_/view?usp=sharing'
+    resumeLink: string = 'https://drive.google.com/file/d/1stGmZ8Y4VM-zbg-MFIGm2MrDHn6oLO7_/view?usp=sharing';
     description: string = `
         Hi. I'm Sam. I write code.
 
@@ -23,9 +27,13 @@ export class HomeComponent implements OnInit {
         My job involves building dockerized micro-services, APIs and apps using Docker Compose.
 
         I enjoy learning new things by working on personal projects whenever I get the chance!
-    `
+    `;
+    mainProjects$: Observable<Project[]>;
+    otherProjects$: Observable<Project[]>;
 
-    constructor(private _route: ActivatedRoute, public projectService: ProjectService) {
+    constructor(private _route: ActivatedRoute, private _firebaseService: FirebaseService) {
+        this.mainProjects$ = this._firebaseService.config$.pipe(map(v => JSON.parse(v.webProjects ?? '[]')));
+        this.otherProjects$ = this._firebaseService.config$.pipe(map(v => JSON.parse(v.otherProjects ?? '[]')));
     }
 
     ngOnInit(): void {
@@ -52,8 +60,7 @@ export class HomeComponent implements OnInit {
         const elementOffsetTop: number = elementRef.nativeElement.offsetTop;
         window.scrollTo({
             top: elementOffsetTop - this.headerHeight,
-            behavior: 'smooth'
+            behavior: 'smooth',
         });
     }
-
 }
