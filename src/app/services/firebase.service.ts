@@ -24,7 +24,6 @@ export class FirebaseService {
         this._remoteConfig = getRemoteConfig(this._app);
         this._remoteConfig.defaultConfig = defaultConfig;
         this._remoteConfig.settings.fetchTimeoutMillis = 2000;
-        this._remoteConfig.settings.minimumFetchIntervalMillis = 5000;
 
         from(fetchAndActivate(this._remoteConfig))
             .pipe(
