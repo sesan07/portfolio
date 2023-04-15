@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { FirebaseService } from '../services/firebase.service';
 import { Project } from '../app.types';
@@ -12,7 +12,7 @@ import { Project } from '../app.types';
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
     @ViewChild('about') aboutElementRef!: ElementRef<HTMLElement>;
     @ViewChild('webProjects') webProjectsElementRef!: ElementRef<HTMLElement>;
     @ViewChild('otherProjects') otherProjectsElementRef!: ElementRef<HTMLElement>;
@@ -32,9 +32,15 @@ export class HomeComponent implements OnInit {
     mainProjects$: Observable<Project[]>;
     otherProjects$: Observable<Project[]>;
 
+    private _destroy: Subject<void> = new Subject();
+
     constructor(private _route: ActivatedRoute, private _firebaseService: FirebaseService) {
-        this.mainProjects$ = this._firebaseService.config$.pipe(map(v => JSON.parse(v.webProjects ?? '[]')));
-        this.otherProjects$ = this._firebaseService.config$.pipe(map(v => JSON.parse(v.otherProjects ?? '[]')));
+        this.mainProjects$ = this._firebaseService.config$.pipe(
+            map(v => JSON.parse(v.webProjects ?? '[]'), takeUntil(this._destroy))
+        );
+        this.otherProjects$ = this._firebaseService.config$.pipe(
+            map(v => JSON.parse(v.otherProjects ?? '[]'), takeUntil(this._destroy))
+        );
     }
 
     ngOnInit(): void {
@@ -51,6 +57,11 @@ export class HomeComponent implements OnInit {
                     break;
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this._destroy.next();
+        this._destroy.complete();
     }
 
     private _smoothScrollTo(elementRef: ElementRef): void {
