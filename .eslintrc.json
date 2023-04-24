@@ -37,7 +37,6 @@
           {
             "arrayDestructuring": true,
             "memberVariableDeclaration": true,
-            "objectDestructuring": true,
             "parameter": true,
             "propertyDeclaration": true,
             "variableDeclaration": true,

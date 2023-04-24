@@ -12,4 +12,5 @@ export const environment: IEnvironment = {
         projectId: 'samuel-esan-v2',
         appId: '1:664624124219:web:97b8df4e5e661875d2671e',
     },
+    directusUrl: 'https://cms.sesan.dev',
 };

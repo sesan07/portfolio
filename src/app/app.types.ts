@@ -11,6 +11,23 @@ export enum Badge {
     UNITY = 'Unity',
 }
 
+export interface ProjectResponse {
+    name: string;
+    summary: string;
+    card_image_src: string;
+    github_link: string;
+    open_link: string;
+    year: number;
+    descriptions: {
+        text: string;
+    }[];
+    badges: {
+        badge_id: {
+            key: string;
+        };
+    }[];
+}
+
 export interface Project {
     name: string;
     summary: string;
