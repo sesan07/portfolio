@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 
-import { CloudinaryService } from '../services/cloudinary.service';
+import { CloudinaryService } from '../cloudinary/cloudinary.service';
 import { Project } from '../app.types';
 
 @Component({

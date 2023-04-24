@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CloudinaryImage } from '@cloudinary/url-gen';
-import { CloudinaryService } from '../services/cloudinary.service';
 
 import { Badge } from '../app.types';
+import { CloudinaryService } from '../cloudinary/cloudinary.service';
 
 @Component({
     selector: 'app-card',
