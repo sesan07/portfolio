@@ -1,17 +1,48 @@
-<a class="header-title" href="#">Samuel Esan</a>
-<nav class="header-nav" [class.hidden]="!isDropdownOpen" (click)="isDropdownOpen = false">
+<a
+    class="header-title"
+    routerLink=""
+    fragment=""
+    >Samuel Esan</a
+>
+<nav
+    class="header-nav"
+    [class.hidden]="!isDropdownOpen"
+    (click)="isDropdownOpen = false"
+>
     <ol class="header-nav-list">
         <li class="header-nav-list-item">
-            <a class="header-nav-link" routerLink="" fragment="about">About</a>
+            <a
+                class="header-nav-link"
+                routerLink=""
+                fragment="about"
+                >About</a
+            >
         </li>
         <li class="header-nav-list-item">
-            <a class="header-nav-link" routerLink="" fragment="web-projects">Web Projects</a>
+            <a
+                class="header-nav-link"
+                routerLink=""
+                fragment="web-projects"
+                >Web Projects</a
+            >
         </li>
         <li class="header-nav-list-item">
-            <a class="header-nav-link" routerLink="" fragment="other-projects">Other Projects</a>
+            <a
+                class="header-nav-link"
+                routerLink=""
+                fragment="other-projects"
+                >Other Projects</a
+            >
         </li>
     </ol>
 </nav>
-<button class="header-menu-btn" (click)="isDropdownOpen = !isDropdownOpen">
-    <img class="header-menu-icon" src="assets/image/Menu-Bars.png" alt="Menu Icon">
+<button
+    class="header-menu-btn"
+    (click)="isDropdownOpen = !isDropdownOpen"
+>
+    <img
+        class="header-menu-icon"
+        src="assets/image/Menu-Bars.png"
+        alt="Menu Icon"
+    />
 </button>
