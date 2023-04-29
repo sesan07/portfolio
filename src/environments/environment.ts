@@ -11,7 +11,7 @@ export const environment: IEnvironment = {
             cloudName: 'dsimwsznp',
         },
     },
-    directusUrl: 'https://cms.localhost',
+    directusUrl: 'https://cms.sesan.dev',
 };
 
 /*
