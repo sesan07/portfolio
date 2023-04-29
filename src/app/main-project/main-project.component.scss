@@ -1,45 +1,54 @@
 :host {
-  --image-width: 1248px; //  The actual size of main project images is 1248 * 702
-  --card-width: 800px;
-  --card-width-half: calc(var(--card-width) / 2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: calc(var(--image-width) + var(--card-width-half));
+    --image-width: 1248px; //  The actual size of main project images is 1248 * 702
+    --card-width: 800px;
+    --card-width-half: calc(var(--card-width) / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: calc(var(--image-width) + var(--card-width-half));
 
-  & ::ng-deep {
+    & ::ng-deep {
         advanced-image img {
             border: 2px solid var(--primary);
         }
     }
 }
 
+.main-project-card-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
 .main-project-card {
-  max-width: var(--card-width);
-  margin-bottom: 16px;
+    flex-grow: 1;
+    max-width: var(--card-width);
+    z-index: 1;
 }
 
 .main-project-content {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .main-project-children {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 16px;
-  margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .main-project-child {
-  display: inline-flex;
-  align-items: center;
-  width: 280px;
-  min-height: 100px;
-  padding: 16px;
-  box-sizing: border-box;
-  border: 2px solid var(--primary);
-  background-color: var(--background);
+    display: inline-flex;
+    align-items: center;
+    width: 280px;
+    min-height: 100px;
+    padding: 16px;
+    box-sizing: border-box;
+    border: 2px solid var(--primary);
+    background-color: var(--background);
+    z-index: 1;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) s */
@@ -53,27 +62,37 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) xl */
 @media only screen and (min-width: 1200px) {
-  :host {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 100%
-  }
+    :host {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        // justify-content: flex-end;
+        width: 100%;
+    }
 
-  .main-project-content {
-    max-width: 80%;
-  }
+    .main-project-content {
+        margin-left: auto;
+        max-width: 80%;
+    }
 
-  .main-project-card {
-    width: var(--card-width);
-    position: absolute;
-    left: 0;
-    margin-bottom: 0;
-  }
+    .main-project-content.inverted {
+        margin-left: 0;
+        margin-right: auto;
+    }
 
-  .main-project-children {
-    margin-top: -24px;
-  }
+    .main-project-card-wrapper {
+        position: absolute;
+        left: 0;
+        width: var(--card-width);
+        margin-bottom: 0;
+    }
 
+    .main-project-card-wrapper.inverted {
+        left: initial;
+        right: 0;
+    }
+
+    .main-project-children {
+        margin-top: -24px;
+    }
 }

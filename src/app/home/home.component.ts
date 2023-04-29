@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this._route.fragment.subscribe(fragment => {
             switch (fragment) {
+                case '':
                 case 'about':
                     this._smoothScrollTo(this.aboutElementRef);
                     break;

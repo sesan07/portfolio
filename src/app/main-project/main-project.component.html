@@ -1,15 +1,45 @@
-<app-card class="main-project-card"
-          [cardTitle]="project.name"
-          [description]="project.summary"
-          [badges]="project.badges"
-          [githubLink]="project.githubLink"
-          [openLink]="project.openLink"
-          [year]="project.year"
-          [showHeaderDiagonal]="true">
-</app-card>
-<div class="main-project-content">
-    <advanced-image [cldImg]="image"  [alt]="project.name + ' Image'"></advanced-image>
-    <div class="main-project-children">
-        <div class="main-project-child" *ngFor="let description of project.shortDescriptions">{{ description }}</div>
+<div
+    class="main-project-card-wrapper"
+    [class.inverted]="isInverted"
+>
+    <app-card
+        class="main-project-card"
+        appAnimateEntry
+        [animation]="isInverted ? 'slide-in-right' : 'slide-in-left'"
+        [target]="elementRef.nativeElement"
+        [cardTitle]="project.name"
+        [description]="project.summary"
+        [badges]="project.badges"
+        [githubLink]="project.githubLink"
+        [openLink]="project.openLink"
+        [year]="project.year"
+    >
+    </app-card>
+</div>
+<div
+    class="main-project-content"
+    [class.inverted]="isInverted"
+>
+    <advanced-image
+        appAnimateEntry
+        [animation]="isInverted ? 'slide-in-left' : 'slide-in-right'"
+        [target]="elementRef.nativeElement"
+        [cldImg]="image"
+        [alt]="project.name + ' Image'"
+    ></advanced-image>
+    <div
+        #descriptionsElement
+        class="main-project-children"
+    >
+        <div
+            class="main-project-child"
+            *ngFor="let description of project.shortDescriptions; let i = index"
+            appAnimateEntry
+            animation="slide-in-bottom"
+            [target]="descriptionsElement"
+            [delay]="i * descriptionAnimationDelay"
+        >
+            {{ description }}
+        </div>
     </div>
 </div>

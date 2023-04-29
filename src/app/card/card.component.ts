@@ -19,8 +19,6 @@ export class CardComponent implements OnInit {
     @Input() imageSrc?: string;
     @Input() badges: Badge[] = [];
     @Input() year?: number;
-    @Input() showHeaderDiagonal?: boolean;
-    @Input() showFooterDiagonal?: boolean;
 
     public image?: CloudinaryImage;
     constructor(private _cldService: CloudinaryService) {}
