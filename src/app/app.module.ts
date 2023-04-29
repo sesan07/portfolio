@@ -11,9 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainProjectComponent } from './main-project/main-project.component';
 import { TitleComponent } from './title/title.component';
 import { CardComponent } from './card/card.component';
+import { AnimateEntryDirective } from './animate-entry/animate-entry.directive';
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent, HomeComponent, MainProjectComponent, TitleComponent, CardComponent],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        MainProjectComponent,
+        TitleComponent,
+        CardComponent,
+        AnimateEntryDirective,
+    ],
     imports: [BrowserModule, HttpClientModule, CloudinaryModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
