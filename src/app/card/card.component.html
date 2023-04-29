@@ -1,34 +1,77 @@
 <div class="card-header-wrapper">
-    <div *ngIf="showHeaderDiagonal" class="card-diagonal-top-left"></div>
-    <span class="card-title">{{ cardTitle }}</span>
+    <div class="diagonal diagonal-top-left"></div>
+    <div class="card-title">{{ cardTitle }}</div>
+    <div class="diagonal diagonal-top-right"></div>
 </div>
-<div class="card-image-wrapper">
-    <advanced-image *ngIf="image" [cldImg]="image"  [alt]="cardTitle + ' Image'"></advanced-image>
+<div
+    class="card-image-wrapper"
+    *ngIf="image"
+>
+    <advanced-image
+        [cldImg]="image"
+        [alt]="cardTitle + ' Image'"
+    ></advanced-image>
 </div>
-<div class="card-content" [class.bottom-border]="!badges">
+<div class="card-content">
     <p class="card-description">{{ description }}</p>
-    <div *ngIf="githubLink || openLink || resumeLink" class="card-links">
-        <a *ngIf="githubLink" class="card-link" target="_blank" [href]="githubLink">
-            <img class="card-link-image" [src]="getIcon('Github')" alt="Github Icon">
+    <div
+        *ngIf="githubLink || openLink || resumeLink"
+        class="card-links"
+    >
+        <a
+            *ngIf="githubLink"
+            class="card-link"
+            target="_blank"
+            [href]="githubLink"
+        >
+            <img
+                class="card-link-image"
+                [src]="getIcon('Github')"
+                alt="Github Icon"
+            />
             <span class="card-link-text">Github</span>
         </a>
-        <a *ngIf="openLink" class="card-link" target="_blank" [href]="openLink">
-            <img class="card-link-image" [src]="getIcon('Link')" alt="Project Link Icon">
+        <a
+            *ngIf="openLink"
+            class="card-link"
+            target="_blank"
+            [href]="openLink"
+        >
+            <img
+                class="card-link-image"
+                [src]="getIcon('Link')"
+                alt="Project Link Icon"
+            />
             <span class="card-link-text">Open</span>
         </a>
-        <a *ngIf="resumeLink" class="card-link" target="_blank" [href]="resumeLink">
-            <img class="card-link-image" [src]="getIcon('Resume')" alt="Resume Icon">
+        <a
+            *ngIf="resumeLink"
+            class="card-link"
+            target="_blank"
+            [href]="resumeLink"
+        >
+            <img
+                class="card-link-image"
+                [src]="getIcon('Resume')"
+                alt="Resume Icon"
+            />
             <span class="card-link-text">Resume</span>
         </a>
     </div>
 </div>
 <div class="card-footer-wrapper">
+    <div class="diagonal diagonal-bottom-left"></div>
     <span class="card-footer">
         <span class="badge-wrapper">
-            <img class="badge" *ngFor="let badge of badges" [src]="getIcon(badge)" [title]="badge"
-                 [alt]="badge + ' Icon'">
-            {{ year }}
+            <img
+                class="badge"
+                *ngFor="let badge of badges"
+                [src]="getIcon(badge)"
+                [title]="badge"
+                [alt]="badge + ' Icon'"
+            />
         </span>
+        <span>{{ year }}</span>
     </span>
-    <span *ngIf="showFooterDiagonal" class="card-diagonal-bottom-right"></span>
+    <div class="diagonal diagonal-bottom-right"></div>
 </div>
