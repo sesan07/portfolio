@@ -7,5 +7,6 @@ export const environment: IEnvironment = {
             cloudName: 'dsimwsznp',
         },
     },
+    cloudinaryURL: 'https://res.cloudinary.com/dsimwsznp',
     directusUrl: 'https://cms.sesan.dev',
 };

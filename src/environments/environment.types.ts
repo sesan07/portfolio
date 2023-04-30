@@ -3,5 +3,6 @@ import ICloudinaryConfigurations from '@cloudinary/url-gen/config/interfaces/Con
 export interface IEnvironment {
     production: boolean;
     cloudinary: ICloudinaryConfigurations;
+    cloudinaryURL: string;
     directusUrl: string;
 }
