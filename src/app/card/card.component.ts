@@ -21,6 +21,6 @@ export class CardComponent {
     readonly defaultImgWidth: number = 1080;
     readonly imgWidthPairs: [number, number][] = [[600, 700]]; // [media query max-width, img width]
 
-    getIcon = (iconKey: string): string => `assets/image/${iconKey}.png`;
+    getIcon = (iconKey: string): string => `assets/image/${iconKey}.webp`;
     getIconName = (iconKey: string): string => iconKey.replace(/-/g, ' ');
 }
