@@ -18,7 +18,7 @@ export class ProjectImageDirective implements OnInit {
     }
 
     private _getImgSrcUrl(width: number): string {
-        return `${environment.cloudinaryURL}/w_${width}/${this.imgSrc}.jpg`;
+        return `${environment.cloudinaryURL}/w_${width}/${this.imgSrc}.webp`;
     }
     private _getImgSrcSet(): string {
         const imgWidths: number[] = this.imgWidthPairs.map(([_, w]) => w);
