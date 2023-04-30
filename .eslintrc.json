@@ -35,7 +35,6 @@
         "@typescript-eslint/typedef": [
           "error",
           {
-            "arrayDestructuring": true,
             "memberVariableDeclaration": true,
             "parameter": true,
             "propertyDeclaration": true,

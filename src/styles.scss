@@ -42,22 +42,22 @@ a {
     text-decoration: none;
 }
 
-advanced-image img {
+.shrink-header {
+    height: calc(var(--header-height) - 32px) !important;
+}
+
+.project-image {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     box-sizing: border-box;
 }
 
-.shrink-header {
-    height: calc(var(--header-height) - 32px) !important;
-}
-
 .slide-in-left,
 .slide-in-right,
 .slide-in-bottom,
 .fade-in {
-    animation-duration: 1s;
+    animation-duration: 0.5s;
 }
 
 .slide-in-left {

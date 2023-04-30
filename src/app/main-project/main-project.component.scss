@@ -4,14 +4,7 @@
     --card-width-half: calc(var(--card-width) / 2);
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: calc(var(--image-width) + var(--card-width-half));
-
-    & ::ng-deep {
-        advanced-image img {
-            border: 2px solid var(--primary);
-        }
-    }
 }
 
 .main-project-card-wrapper {
@@ -51,6 +44,10 @@
     z-index: 1;
 }
 
+.project-image {
+    border: 2px solid var(--primary);
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) s */
 //@media only screen and (min-width: 600px) {...}
 
@@ -85,6 +82,7 @@
         left: 0;
         width: var(--card-width);
         margin-bottom: 0;
+        margin-top: 150px;
     }
 
     .main-project-card-wrapper.inverted {

@@ -20,13 +20,18 @@
     class="main-project-content"
     [class.inverted]="isInverted"
 >
-    <advanced-image
+    <img
+        class="project-image"
         appAnimateEntry
+        appProjectImage
         [animation]="isInverted ? 'slide-in-left' : 'slide-in-right'"
         [target]="elementRef.nativeElement"
-        [cldImg]="image"
+        [imgSrc]="project.cardImageSrc"
+        [imgWidthPairs]="imgWidthPairs"
+        [defaultImgWidth]="defaultImgWidth"
         [alt]="project.name + ' Image'"
-    ></advanced-image>
+        loading="lazy"
+    />
     <div
         #descriptionsElement
         class="main-project-children"

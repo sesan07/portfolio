@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { CloudinaryImage } from '@cloudinary/url-gen';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Badge } from '../app.types';
-import { CloudinaryService } from '../cloudinary/cloudinary.service';
 
 @Component({
     selector: 'app-card',
@@ -10,7 +8,7 @@ import { CloudinaryService } from '../cloudinary/cloudinary.service';
     styleUrls: ['./card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
     @Input() cardTitle: string = '';
     @Input() description: string = '';
     @Input() githubLink?: string;
@@ -20,20 +18,9 @@ export class CardComponent implements OnInit {
     @Input() badges: Badge[] = [];
     @Input() year?: number;
 
-    public image?: CloudinaryImage;
-    constructor(private _cldService: CloudinaryService) {}
+    readonly defaultImgWidth: number = 1080;
+    readonly imgWidthPairs: [number, number][] = [[600, 700]]; // [media query max-width, img width]
 
-    ngOnInit(): void {
-        if (this.imageSrc) {
-            this.image = this._cldService.getImage(this.imageSrc);
-        }
-    }
-
-    getIcon(iconKey: string): string {
-        return `assets/image/${iconKey}.png`;
-    }
-
-    getIconName(iconKey: string): string {
-        return iconKey.replace(/-/g, ' ');
-    }
+    getIcon = (iconKey: string): string => `assets/image/${iconKey}.png`;
+    getIconName = (iconKey: string): string => iconKey.replace(/-/g, ' ');
 }

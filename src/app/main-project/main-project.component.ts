@@ -1,15 +1,5 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    Input,
-    OnInit,
-} from '@angular/core';
-import { CloudinaryImage } from '@cloudinary/url-gen';
+import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 
-import { CloudinaryService } from '../cloudinary/cloudinary.service';
 import { Project } from '../app.types';
 
 @Component({
@@ -18,16 +8,16 @@ import { Project } from '../app.types';
     styleUrls: ['./main-project.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainProjectComponent implements OnInit {
+export class MainProjectComponent {
     @Input() project!: Project;
     @Input() isInverted?: boolean;
 
-    public image!: CloudinaryImage;
+    readonly defaultImgWidth: number = 1248;
+    readonly imgWidthPairs: [number, number][] = [
+        [600, 700],
+        [992, 1000],
+    ]; // [media query max-width, img width]
     public readonly descriptionAnimationDelay: number = 150;
 
-    constructor(public elementRef: ElementRef<HTMLElement>, private _cldService: CloudinaryService) {}
-
-    ngOnInit(): void {
-        this.image = this._cldService.getImage(this.project.cardImageSrc);
-    }
+    constructor(public elementRef: ElementRef<HTMLElement>) {}
 }

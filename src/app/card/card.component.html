@@ -5,12 +5,17 @@
 </div>
 <div
     class="card-image-wrapper"
-    *ngIf="image"
+    *ngIf="imageSrc"
 >
-    <advanced-image
-        [cldImg]="image"
+    <img
+        class="project-image"
+        appProjectImage
+        [imgSrc]="imageSrc"
+        [imgWidthPairs]="imgWidthPairs"
+        [defaultImgWidth]="defaultImgWidth"
         [alt]="cardTitle + ' Image'"
-    ></advanced-image>
+        loading="lazy"
+    />
 </div>
 <div class="card-content">
     <p class="card-description">{{ description }}</p>
