@@ -146,6 +146,7 @@
 .card-link-image {
     display: inline;
     height: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .card-link-text {
@@ -161,6 +162,7 @@
 
 .badge {
     width: calc(var(--common-title-height) - 8px);
+    aspect-ratio: 1 / 1;
     box-sizing: border-box;
     padding: 4px;
     background-color: var(--accent);
