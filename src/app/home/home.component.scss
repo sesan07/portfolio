@@ -58,20 +58,22 @@ section {
 }
 
 .footer-section {
-    gap: 16px;
-    padding: 0 16px 16px 16px;
+    gap: 8px;
+    margin: 0 16px 16px 16px;
     box-sizing: border-box;
     font-family: var(--title-font-family);
 }
 
-.footer-text {
-    text-align: center;
+.footer-name {
+    color: var(--primary);
 }
 
 .footer-text.email {
     text-decoration: underline;
+    padding: 0 4px;
 
     &:hover {
+        color: var(--accent);
         outline: 2px dashed var(--accent);
     }
 }
