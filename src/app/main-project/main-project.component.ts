@@ -1,12 +1,18 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
+import { NgFor } from '@angular/common';
 
 import { Project } from '../app.types';
+import { ProjectImageDirective } from '../project-image/project-image.directive';
+import { AnimateEntryDirective } from '../animate-entry/animate-entry.directive';
+import { CardComponent } from '../card/card.component';
 
 @Component({
     selector: 'app-main-project',
     templateUrl: './main-project.component.html',
     styleUrls: ['./main-project.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [CardComponent, AnimateEntryDirective, ProjectImageDirective, NgFor],
 })
 export class MainProjectComponent {
     @Input() project!: Project;

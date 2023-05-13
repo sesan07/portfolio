@@ -2,6 +2,7 @@ import { AfterViewInit, Directive, ElementRef, Input, OnDestroy, Renderer2 } fro
 
 @Directive({
     selector: '[appAnimateEntry]',
+    standalone: true,
 })
 export class AnimateEntryDirective implements AfterViewInit, OnDestroy {
     @Input() animation!: string;

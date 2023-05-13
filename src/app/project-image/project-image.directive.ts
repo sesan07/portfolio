@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 
 @Directive({
     selector: '[appProjectImage]',
+    standalone: true,
 })
 export class ProjectImageDirective implements OnInit {
     @Input() imgSrc!: string;
