@@ -6,9 +6,9 @@ import { environment } from 'src/environments/environment';
     standalone: true,
 })
 export class ProjectImageDirective implements OnInit {
-    @Input() imgSrc!: string;
-    @Input() imgWidthPairs!: [number, number][];
-    @Input() defaultImgWidth!: number;
+    @Input({ required: true }) imgSrc!: string;
+    @Input({ required: true }) imgWidthPairs!: [number, number][];
+    @Input({ required: true }) defaultImgWidth!: number;
 
     constructor(private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2) {}
 

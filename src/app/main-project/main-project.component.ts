@@ -15,7 +15,7 @@ import { CardComponent } from '../card/card.component';
     imports: [CardComponent, AnimateEntryDirective, ProjectImageDirective, NgFor],
 })
 export class MainProjectComponent {
-    @Input() project!: Project;
+    @Input({ required: true }) project!: Project;
     @Input() isInverted?: boolean;
 
     readonly defaultImgWidth: number = 1248;

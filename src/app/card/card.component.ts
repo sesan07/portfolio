@@ -13,13 +13,13 @@ import { ProjectImageDirective } from '../project-image/project-image.directive'
     imports: [NgIf, ProjectImageDirective, NgFor],
 })
 export class CardComponent {
-    @Input() cardTitle: string = '';
-    @Input() description: string = '';
+    @Input({ required: true }) cardTitle: string = '';
+    @Input({ required: true }) description: string = '';
     @Input() githubLink?: string;
     @Input() openLink?: string;
     @Input() resumeLink?: string;
     @Input() imageSrc?: string;
-    @Input() badges: Badge[] = [];
+    @Input() badges?: Badge[] = [];
     @Input() year?: number;
 
     readonly defaultImgWidth: number = 1080;
