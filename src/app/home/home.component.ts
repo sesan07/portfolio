@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
         I work in web development of Angular 2 based apps.
         I work with technologies like NodeJS, Docker, Hapi, RAML, Molecular, Oracle and the ELK stack.
-        My job involves building dockerized micro-services, APIs and apps using Docker Compose.
+        My job involves building dockerized micro-services, APIs and apps.
 
         I enjoy learning new things by working on personal projects whenever I get the chance!
     `;

@@ -29,6 +29,7 @@
         [imgWidthPairs]="imgWidthPairs"
         [defaultImgWidth]="defaultImgWidth"
         [alt]="project.name + ' Image'"
+        [loading]="lazyLoadImage ? 'lazy' : 'eager'"
     />
     <div
         #descriptionsElement

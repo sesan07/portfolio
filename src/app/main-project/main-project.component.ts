@@ -17,6 +17,7 @@ import { CardComponent } from '../card/card.component';
 export class MainProjectComponent {
     @Input({ required: true }) project!: Project;
     @Input() isInverted?: boolean;
+    @Input() lazyLoadImage?: boolean;
 
     readonly defaultImgWidth: number = 1248;
     readonly imgWidthPairs: [number, number][] = [

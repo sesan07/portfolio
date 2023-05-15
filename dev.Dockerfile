@@ -12,8 +12,7 @@ COPY ./angular.json .
 COPY ./tsconfig.json .
 COPY ./tsconfig.app.json .
 COPY ./tsconfig.server.json .
-RUN npm run build:ssr
 
-CMD [ "npm", "run", "serve:ssr" ]
+CMD [ "npm", "run", "dev:ssr" ]
 
-EXPOSE 4000
+EXPOSE 4200

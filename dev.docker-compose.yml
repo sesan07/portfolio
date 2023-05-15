@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  portfolio:
+    container_name: portfolio
+    image: portfolio
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    depends_on:
+      - directus
+    volumes:
+      - ./src:/app/src:cached
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - DIRECTUS_URL=${PORTFOLIO_DIRECTUS_URL}
+      - UPDATE_INTERVAL=${PORTFOLIO_UPDATE_INTERVAL}
+    ports:
+      - 4200:4200
+  postgres:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - ./postgres/data/:/var/lib/postgresql/data/
+      # - ./postgres/scripts/:/docker-entrypoint-initdb.d/:ro
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DIRECTUS_USER=${POSTGRES_DIRECTUS_USER}
+      - POSTGRES_DIRECTUS_PASSWORD=${POSTGRES_DIRECTUS_PASSWORD}
+      - POSTGRES_DIRECTUS_DATABASE=${POSTGRES_DIRECTUS_DATABASE}
+  directus:
+    container_name: directus
+    image: directus/directus
+    depends_on:
+      - postgres
+    environment:
+      - LOG_LEVEL=${DIRECTUS_LOG_LEVEL}
+      - KEY=${DIRECTUS_KEY}
+      - SECRET=${DIRECTUS_SECRET}
+      - DB_CLIENT=${DIRECTUS_DB_CLIENT}
+      - DB_HOST=${POSTGRES_HOST}
+      - DB_PORT=${POSTGRES_PORT}
+      - DB_DATABASE=${POSTGRES_DIRECTUS_DATABASE}
+      - DB_USER=${POSTGRES_DIRECTUS_USER}
+      - DB_PASSWORD=${POSTGRES_DIRECTUS_PASSWORD}
+      - CACHE_ENABLED=${DIRECTUS_CACHE_ENABLED}
+      - ADMIN_EMAIL=${DIRECTUS_EMAIL}
+      - ADMIN_PASSWORD=${DIRECTUS_PASSWORD}
+    ports:
+      - 8055:8055

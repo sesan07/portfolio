@@ -38,3 +38,10 @@ export interface Project {
     openLink?: string;
     year: number;
 }
+
+export interface AppState {
+    projects: {
+        web: Project[];
+        other: Project[];
+    };
+}
