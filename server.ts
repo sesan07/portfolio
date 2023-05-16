@@ -143,10 +143,10 @@ export function app(): express.Express {
     return server;
 }
 
-function run(): void {
+async function run(): Promise<void> {
     const port = process.env['PORT'] || 4000;
 
-    updateProjects();
+    await updateProjects();
     const interval = process.env['UPDATE_INTERVAL'] ? +process.env['UPDATE_INTERVAL'] : 3600000;
     setInterval(updateProjects, interval);
 
