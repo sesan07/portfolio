@@ -41,7 +41,7 @@ jobs:
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
       - name: Deploy latest image
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.SSH_HOST_WORK_DIR }} && git pull && docker compose pull portfolio && docker compose up -d portfolio"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.SSH_HOST_WORK_DIR }} && git pull && cd portfolio && docker compose pull && docker compose up -d"
 
       - name: Cleanup
         run: rm -rf ~/.ssh
