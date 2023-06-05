@@ -27,10 +27,9 @@ export class HomeComponent implements OnInit {
     githubLink: string = 'https://github.com/sesan07';
     resumeLink: string = 'https://drive.google.com/file/d/1stGmZ8Y4VM-zbg-MFIGm2MrDHn6oLO7_/view?usp=sharing';
     description: string = `
-        Hi. I'm Sam. I write code.
+        Hi. I'm Sam, an Angular web developer.
 
-        I work in web development of Angular 2 based apps.
-        I work with technologies like NodeJS, Docker, Hapi, RAML, Molecular, Oracle and the ELK stack.
+        I also work with technologies like NodeJS, Docker, Hapi, RAML, Molecular, Oracle and the ELK stack.
         My job involves building dockerized micro-services, APIs and apps.
 
         I enjoy learning new things by working on personal projects whenever I get the chance!
