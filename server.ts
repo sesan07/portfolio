@@ -4,6 +4,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import express from 'express';
 import axios from 'axios';
+import morgan from 'morgan';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './src/main.server';
@@ -107,6 +108,9 @@ export function app(): express.Express {
     const server = express();
     const distFolder = join(process.cwd(), 'dist/portfolio/browser');
     const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+
+    // Log requests
+    server.use(morgan('common'));
 
     // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
     server.engine(
