@@ -85,7 +85,7 @@ const mapProject = (res: ProjectResponse): Project => ({
     year: res.year,
 });
 
-const getProjects = async (type: string): Promise<Project[]> => {
+const getProjects = async (type: string) => {
     const directusUrl: string = process.env['DIRECTUS_URL'] || 'http://directus:8055';
     return (
         await axios.get<{ data: ProjectResponse[] }>(`${directusUrl}/items/project`, {
@@ -147,8 +147,8 @@ async function run(): Promise<void> {
     const port = process.env['PORT'] || 4000;
 
     await updateProjects();
-    // const interval = process.env['UPDATE_INTERVAL'] ? +process.env['UPDATE_INTERVAL'] : 3600000;
-    // setInterval(updateProjects, interval);
+    const interval = process.env['UPDATE_INTERVAL'] ? +process.env['UPDATE_INTERVAL'] : 3600000;
+    setInterval(updateProjects, interval);
 
     // Start up the Node server
     const server = app();
