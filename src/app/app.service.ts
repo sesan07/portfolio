@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, Optional, PLATFORM_ID, TransferState, makeStateKey } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID, StateKey, TransferState, makeStateKey } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { AppState, Badge, Project, ProjectResponse } from './app.types';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 
-const APP_STATE_KEY = makeStateKey<AppState>('APP_STATE');
+const APP_STATE_KEY: StateKey<AppState> = makeStateKey<AppState>('APP_STATE');
 
 @Injectable({
     providedIn: 'root',
@@ -25,7 +25,7 @@ export class AppService {
     ];
 
     constructor(
-        @Inject(PLATFORM_ID) platformId: Object,
+        @Inject(PLATFORM_ID) platformId: object,
         @Optional() @Inject('APP_STATE') private _appState: AppState,
         private _state: TransferState,
         private _http: HttpClient

@@ -13,8 +13,12 @@ export class AnimateEntryDirective implements AfterViewInit, OnDestroy {
     private _observer!: IntersectionObserver;
     private _isBrowser: boolean;
 
-    constructor(@Inject(PLATFORM_ID) platformId: Object,private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2) {
-        this._isBrowser = isPlatformBrowser(platformId)
+    constructor(
+        @Inject(PLATFORM_ID) platformId: object,
+        private _elementRef: ElementRef<HTMLElement>,
+        private _renderer: Renderer2
+    ) {
+        this._isBrowser = isPlatformBrowser(platformId);
     }
 
     ngAfterViewInit(): void {

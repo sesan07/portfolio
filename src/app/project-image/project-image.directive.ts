@@ -22,7 +22,7 @@ export class ProjectImageDirective implements OnInit {
         return `${environment.cloudinaryURL}/w_${width}/${this.imgSrc}.webp`;
     }
     private _getImgSrcSet(): string {
-        const imgWidths: number[] = this.imgWidthPairs.map(([_, w]) => w);
+        const imgWidths: number[] = this.imgWidthPairs.map(([, w]) => w);
         return imgWidths
             .map(width => `${this._getImgSrcUrl(width)} ${width}w`)
             .concat(this._getImgSrcUrl(this.defaultImgWidth))
