@@ -1,12 +1,10 @@
-import 'zone.js/node';
-
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import axios from 'axios';
-import express from 'express';
+import express, { Express } from 'express';
 import morgan from 'morgan';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import bootstrap from './src/main.server';
 
 export interface ProjectResponse {
@@ -86,7 +84,7 @@ const mapProject = (res: ProjectResponse): Project => ({
     year: res.year,
 });
 
-const getProjects = async (type: string) => {
+const getProjects = async (type: string): Promise<Project[]> => {
     const directusUrl: string = process.env['DIRECTUS_URL'] || 'https://portfolio.sesan.dev/cms';
     return (
         await axios.get<{ data: ProjectResponse[] }>(`${directusUrl}/items/project`, {
@@ -98,33 +96,34 @@ const getProjects = async (type: string) => {
     ).data.data.map(mapProject);
 };
 
-const updateProjects = async () => {
+const updateProjects = async (): Promise<void> => {
     appState.projects.web = await getProjects('web');
     appState.projects.other = await getProjects('other');
 };
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app(): express.Express {
-    const server = express();
-    const distFolder = join(process.cwd(), 'dist/portfolio/browser');
-    const indexHtml = existsSync(join(distFolder, 'index.original.html'))
-        ? join(distFolder, 'index.original.html')
-        : join(distFolder, 'index.html');
+export function app(): Express {
+    const server: Express = express();
+    const serverDistFolder: string = dirname(fileURLToPath(import.meta.url));
+    const browserDistFolder: string = resolve(serverDistFolder, '../browser');
+    const indexHtml: string = join(serverDistFolder, 'index.server.html');
 
     // Log requests
     server.use(morgan('common'));
 
-    const commonEngine = new CommonEngine();
+    const commonEngine: CommonEngine = new CommonEngine({
+        enablePerformanceProfiler: true,
+    });
 
     server.set('view engine', 'html');
-    server.set('views', distFolder);
+    server.set('views', browserDistFolder);
 
     // Example Express Rest API endpoints
     // server.get('/api/**', (req, res) => { });
     // Serve static files from /browser
     server.get(
         '*.*',
-        express.static(distFolder, {
+        express.static(browserDistFolder, {
             maxAge: '1y',
         })
     );
@@ -138,7 +137,7 @@ export function app(): express.Express {
                 bootstrap,
                 documentFilePath: indexHtml,
                 url: `${protocol}://${headers.host}${originalUrl}`,
-                publicPath: distFolder,
+                publicPath: browserDistFolder,
                 providers: [
                     { provide: APP_BASE_HREF, useValue: baseUrl },
                     { provide: 'APP_STATE', useValue: appState },
@@ -152,27 +151,17 @@ export function app(): express.Express {
 }
 
 async function run(): Promise<void> {
-    const port = process.env['PORT'] || 4000;
+    const port: number = process.env['PORT'] ? +process.env['PORT'] : 4000;
 
     await updateProjects();
-    const interval = process.env['UPDATE_INTERVAL'] ? +process.env['UPDATE_INTERVAL'] : 3600000;
+    const interval: number = process.env['UPDATE_INTERVAL'] ? +process.env['UPDATE_INTERVAL'] : 3600000;
     setInterval(updateProjects, interval);
 
     // Start up the Node server
-    const server = app();
+    const server: Express = app();
     server.listen(port, () => {
         console.log(`Node Express server listening on http://localhost:${port}`);
     });
 }
 
-// Webpack will replace 'require' with '__webpack_require__'
-// '__non_webpack_require__' is a proxy to Node 'require'
-// The below code is to ensure that the server is run only when not requiring the bundle.
-declare const __non_webpack_require__: NodeRequire;
-const mainModule = __non_webpack_require__.main;
-const moduleFilename = (mainModule && mainModule.filename) || '';
-if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
-    run();
-}
-
-export default bootstrap;
+run();

@@ -11,9 +11,8 @@ COPY ./server.ts .
 COPY ./angular.json .
 COPY ./tsconfig.json .
 COPY ./tsconfig.app.json .
-COPY ./tsconfig.server.json .
-RUN npm run build:ssr
+RUN npm run build:prod
 
-CMD [ "npm", "run", "serve:ssr" ]
+CMD [ "npm", "run", "serve:prod" ]
 
 EXPOSE 4000
