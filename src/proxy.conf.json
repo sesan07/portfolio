@@ -1,0 +1,6 @@
+{
+  "/cms": {
+    "target": "https://portfolio.sesan.dev",
+    "changeOrigin": true
+  }
+}
