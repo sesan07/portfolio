@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { Project } from '../app.types';
@@ -19,12 +19,11 @@ export class MainProjectComponent {
     @Input() isInverted?: boolean;
     @Input() lazyLoadImage?: boolean;
 
+    elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
     readonly defaultImgWidth: number = 1248;
     readonly imgWidthPairs: [number, number][] = [
         [600, 700],
         [992, 1000],
     ]; // [media query max-width, img width]
-    public readonly descriptionAnimationDelay: number = 150;
-
-    constructor(public elementRef: ElementRef<HTMLElement>) {}
+    readonly descriptionAnimationDelay: number = 150;
 }

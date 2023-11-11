@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, Inject, Input, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, OnDestroy, PLATFORM_ID, Renderer2, inject } from '@angular/core';
 
 @Directive({
     selector: '[appAnimateEntry]',
@@ -10,16 +10,10 @@ export class AnimateEntryDirective implements AfterViewInit, OnDestroy {
     @Input() target?: HTMLElement;
     @Input() delay?: number;
 
+    private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+    private _renderer = inject(Renderer2);
+    private _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private _observer!: IntersectionObserver;
-    private _isBrowser: boolean;
-
-    constructor(
-        @Inject(PLATFORM_ID) platformId: object,
-        private _elementRef: ElementRef<HTMLElement>,
-        private _renderer: Renderer2
-    ) {
-        this._isBrowser = isPlatformBrowser(platformId);
-    }
 
     ngAfterViewInit(): void {
         if (!this._isBrowser) {

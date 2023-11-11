@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,10 @@ import { Badge, Project, ProjectResponse } from './app.types';
     providedIn: 'root',
 })
 export class AppService {
+    webProjects = signal<Project[]>([]);
+    otherProjects = signal<Project[]>([]);
+
+    private _http = inject(HttpClient);
     private readonly _projectFields: string[] = [
         'name',
         'summary',
@@ -20,7 +24,10 @@ export class AppService {
         'badges.badge_id.key',
     ];
 
-    constructor(private _http: HttpClient) {}
+    constructor() {
+        this.getProjects$('web').subscribe(p => this.webProjects.set(p));
+        this.getProjects$('other').subscribe(p => this.otherProjects.set(p));
+    }
 
     getProjects$(type: 'web' | 'other'): Observable<Project[]> {
         const url: string = `${environment.cmsUrl}/items/project`;

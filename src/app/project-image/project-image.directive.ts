@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Directive({
@@ -10,7 +10,8 @@ export class ProjectImageDirective implements OnInit {
     @Input({ required: true }) imgWidthPairs!: [number, number][];
     @Input({ required: true }) defaultImgWidth!: number;
 
-    constructor(private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2) {}
+    private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+    private _renderer = inject(Renderer2);
 
     ngOnInit(): void {
         this._renderer.setAttribute(this._elementRef.nativeElement, 'src', this._getImgSrcUrl(this.defaultImgWidth));

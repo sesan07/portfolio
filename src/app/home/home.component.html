@@ -16,7 +16,7 @@
     <app-title class="secondary-title">Web Projects</app-title>
     <div class="main-projects-section-content">
         <app-main-project
-            *ngFor="let project of mainProjects$ | async; let odd = odd; let first = first"
+            *ngFor="let project of appService.webProjects(); let odd = odd; let first = first"
             [project]="project"
             [isInverted]="odd"
             [lazyLoadImage]="!first"
@@ -29,7 +29,7 @@
     <div class="other-projects-section-content">
         <app-card
             class="other-project"
-            *ngFor="let project of otherProjects$ | async"
+            *ngFor="let project of appService.otherProjects()"
             appAnimateEntry
             animation="fade-in"
             [cardTitle]="project.name"

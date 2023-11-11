@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor, AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
 
-import { Project } from '../app.types';
 import { AppService } from '../app.service';
 import { AnimateEntryDirective } from '../animate-entry/animate-entry.directive';
 import { MainProjectComponent } from '../main-project/main-project.component';
@@ -23,6 +21,7 @@ export class HomeComponent implements OnInit {
     @ViewChild('webProjects') webProjectsElementRef!: ElementRef<HTMLElement>;
     @ViewChild('otherProjects') otherProjectsElementRef!: ElementRef<HTMLElement>;
 
+    appService = inject(AppService);
     headerHeight: number = 100;
     githubLink: string = 'https://github.com/sesan07';
     resumeLink: string = 'https://drive.google.com/file/d/1stGmZ8Y4VM-zbg-MFIGm2MrDHn6oLO7_/view?usp=sharing';
@@ -34,13 +33,8 @@ export class HomeComponent implements OnInit {
 
         I enjoy learning new things by working on personal projects whenever I get the chance!
     `;
-    mainProjects$: Observable<Project[]>;
-    otherProjects$: Observable<Project[]>;
 
-    constructor(appService: AppService, private _route: ActivatedRoute) {
-        this.mainProjects$ = appService.getProjects$('web');
-        this.otherProjects$ = appService.getProjects$('other');
-    }
+    private _route = inject(ActivatedRoute);
 
     ngOnInit(): void {
         this._route.fragment.subscribe(fragment => {
