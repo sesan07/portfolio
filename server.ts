@@ -87,7 +87,7 @@ const mapProject = (res: ProjectResponse): Project => ({
 });
 
 const getProjects = async (type: string) => {
-    const directusUrl: string = process.env['DIRECTUS_URL'] || 'http://directus:8055';
+    const directusUrl: string = process.env['DIRECTUS_URL'] || 'https://portfolio.sesan.dev/cms';
     return (
         await axios.get<{ data: ProjectResponse[] }>(`${directusUrl}/items/project`, {
             params: {
