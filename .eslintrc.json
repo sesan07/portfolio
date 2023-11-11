@@ -36,16 +36,6 @@
             "allowExpressions": true
           }
         ],
-        "@typescript-eslint/typedef": [
-          "error",
-          {
-            "memberVariableDeclaration": true,
-            "parameter": true,
-            "propertyDeclaration": true,
-            "variableDeclaration": true,
-            "variableDeclarationIgnoreFunction": true
-          }
-        ],
         "semi": [2, "always"],
         "prefer-const": ["error"]
       }
