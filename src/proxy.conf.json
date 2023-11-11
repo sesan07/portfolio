@@ -2,5 +2,12 @@
   "/cms": {
     "target": "https://portfolio.sesan.dev",
     "changeOrigin": true
+  },
+  "/serverCMS": {
+    "target": "https://portfolio.sesan.dev",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/serverCMS": "/cms"
+    }
   }
 }

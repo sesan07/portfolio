@@ -7,7 +7,8 @@ import { IEnvironment } from './environment.types';
 export const environment: IEnvironment = {
     production: false,
     cloudinaryURL: 'https://res.cloudinary.com/dsimwsznp',
-    directusUrl: '/cms',
+    cmsUrl: '/cms',
+    serverCMSUrl: '/serverCMS',
 };
 
 /*

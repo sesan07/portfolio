@@ -1,5 +1,6 @@
 export interface IEnvironment {
     production: boolean;
     cloudinaryURL: string;
-    directusUrl: string;
+    cmsUrl: string;
+    serverCMSUrl: string;
 }

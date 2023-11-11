@@ -1,18 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, Optional, PLATFORM_ID, StateKey, TransferState, makeStateKey } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { AppState, Badge, Project, ProjectResponse } from './app.types';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { isPlatformBrowser } from '@angular/common';
-
-const APP_STATE_KEY: StateKey<AppState> = makeStateKey<AppState>('APP_STATE');
+import { Badge, Project, ProjectResponse } from './app.types';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AppService {
-    private _isBrowser: boolean;
     private readonly _projectFields: string[] = [
         'name',
         'summary',
@@ -24,37 +20,10 @@ export class AppService {
         'badges.badge_id.key',
     ];
 
-    constructor(
-        @Inject(PLATFORM_ID) platformId: object,
-        @Optional() @Inject('APP_STATE') private _appState: AppState,
-        private _state: TransferState,
-        private _http: HttpClient
-    ) {
-        this._isBrowser = isPlatformBrowser(platformId);
-        if (!this._isBrowser) {
-            this._state.set(APP_STATE_KEY, this._appState);
-        }
-    }
+    constructor(private _http: HttpClient) {}
 
     getProjects$(type: 'web' | 'other'): Observable<Project[]> {
-        if (this._isBrowser) {
-            this._appState = this._state.get(APP_STATE_KEY, {
-                projects: {
-                    web: [],
-                    other: [],
-                },
-            });
-
-            return this._appState?.projects[type].length
-                ? of(this._appState.projects[type])
-                : this._fetchProjects(type);
-        } else {
-            return of(this._appState?.projects[type] ?? []);
-        }
-    }
-
-    private _fetchProjects(type: string): Observable<Project[]> {
-        const url: string = `${environment.directusUrl}/items/project`;
+        const url: string = `${environment.cmsUrl}/items/project`;
         return this._http
             .get<{ data: ProjectResponse[] }>(url, {
                 params: {
