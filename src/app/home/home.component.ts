@@ -11,7 +11,7 @@ import { TitleComponent } from '../title/title.component';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
+    styleUrl: './home.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [TitleComponent, CardComponent, MainProjectComponent, AnimateEntryDirective, AsyncPipe],

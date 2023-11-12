@@ -8,7 +8,7 @@ import { CardComponent } from '../card/card.component';
 @Component({
     selector: 'app-main-project',
     templateUrl: './main-project.component.html',
-    styleUrls: ['./main-project.component.scss'],
+    styleUrl: './main-project.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [CardComponent, AnimateEntryDirective, ProjectImageDirective],

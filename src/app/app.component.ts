@@ -5,7 +5,7 @@ import { HeaderComponent } from './header/header.component';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    styleUrl: './app.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [HeaderComponent, RouterOutlet],
