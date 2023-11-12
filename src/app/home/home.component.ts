@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { AppService } from '../app.service';
 import { AnimateEntryDirective } from '../animate-entry/animate-entry.directive';
@@ -14,7 +14,7 @@ import { TitleComponent } from '../title/title.component';
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [TitleComponent, CardComponent, NgFor, MainProjectComponent, AnimateEntryDirective, AsyncPipe],
+    imports: [TitleComponent, CardComponent, MainProjectComponent, AnimateEntryDirective, AsyncPipe],
 })
 export class HomeComponent implements OnInit {
     @ViewChild('about') aboutElementRef!: ElementRef<HTMLElement>;

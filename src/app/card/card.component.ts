@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
 
 import { Badge } from '../app.types';
 import { ProjectImageDirective } from '../project-image/project-image.directive';
@@ -7,10 +6,10 @@ import { ProjectImageDirective } from '../project-image/project-image.directive'
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
-    styleUrls: ['./card.component.scss'],
+    styleUrl: './card.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgIf, ProjectImageDirective, NgFor],
+    imports: [ProjectImageDirective],
 })
 export class CardComponent {
     @Input({ required: true }) cardTitle: string = '';

@@ -15,21 +15,22 @@
 <section #webProjects>
     <app-title class="secondary-title">Web Projects</app-title>
     <div class="main-projects-section-content">
+        @for (project of appService.webProjects(); track project.name; let odd = $odd; let first = $first) {
         <app-main-project
-            *ngFor="let project of appService.webProjects(); let odd = odd; let first = first"
             [project]="project"
             [isInverted]="odd"
             [lazyLoadImage]="!first"
         />
+        }
     </div>
 </section>
 
 <section #otherProjects>
     <app-title class="secondary-title">Other Projects</app-title>
     <div class="other-projects-section-content">
+        @for (project of appService.otherProjects(); track project) {
         <app-card
             class="other-project"
-            *ngFor="let project of appService.otherProjects()"
             appAnimateEntry
             animation="fade-in"
             [cardTitle]="project.name"
@@ -40,6 +41,7 @@
             [openLink]="project.openLink"
             [year]="project.year"
         />
+        }
     </div>
 </section>
 

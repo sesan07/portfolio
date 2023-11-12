@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, inject } from '@angular/core';
-import { NgFor } from '@angular/common';
 
 import { Project } from '../app.types';
 import { ProjectImageDirective } from '../project-image/project-image.directive';
@@ -12,7 +11,7 @@ import { CardComponent } from '../card/card.component';
     styleUrls: ['./main-project.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CardComponent, AnimateEntryDirective, ProjectImageDirective, NgFor],
+    imports: [CardComponent, AnimateEntryDirective, ProjectImageDirective],
 })
 export class MainProjectComponent {
     @Input({ required: true }) project!: Project;
