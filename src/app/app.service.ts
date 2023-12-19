@@ -13,8 +13,8 @@ export class AppService {
     webProjects: Signal<Project[] | undefined>;
     otherProjects: Signal<Project[] | undefined>;
 
-    private _http = inject(HttpClient);
-    private readonly _projectFields: string[] = [
+    #http = inject(HttpClient);
+    readonly #projectFields: string[] = [
         'name',
         'summary',
         'card_image_src',
@@ -32,17 +32,17 @@ export class AppService {
 
     getProjects$(type: 'web' | 'other'): Observable<Project[]> {
         const url: string = `${environment.cmsUrl}/items/project`;
-        return this._http
+        return this.#http
             .get<{ data: ProjectResponse[] }>(url, {
                 params: {
-                    fields: this._projectFields.join(','),
+                    fields: this.#projectFields.join(','),
                     'filter[project_type][type][_eq]': type,
                 },
             })
-            .pipe(map(({ data }) => data.map(this._mapProject)));
+            .pipe(map(({ data }) => data.map(this.#mapProject)));
     }
 
-    private _mapProject = (res: ProjectResponse): Project => ({
+    #mapProject = (res: ProjectResponse): Project => ({
         name: res.name,
         summary: res.summary,
         shortDescriptions: res.descriptions.map(desc => desc.text),

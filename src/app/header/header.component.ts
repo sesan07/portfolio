@@ -14,13 +14,13 @@ export class HeaderComponent {
 
     @HostBinding('class.shrink-header')
     get shrinkHeader(): boolean {
-        return !this._isAtTop;
+        return !this.#isAtTop;
     }
 
-    private _isAtTop: boolean = true;
+    #isAtTop: boolean = true;
 
     @HostListener('window:scroll', ['$event'])
     onScroll(): void {
-        this._isAtTop = window.scrollY === 0;
+        this.#isAtTop = window.scrollY === 0;
     }
 }

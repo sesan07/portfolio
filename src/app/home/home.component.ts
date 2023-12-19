@@ -34,26 +34,26 @@ export class HomeComponent implements OnInit {
         I enjoy learning new things by working on personal projects whenever I get the chance!
     `;
 
-    private _route = inject(ActivatedRoute);
+    #route = inject(ActivatedRoute);
 
     ngOnInit(): void {
-        this._route.fragment.subscribe(fragment => {
+        this.#route.fragment.subscribe(fragment => {
             switch (fragment) {
                 case '':
                 case 'about':
-                    this._smoothScrollTo(this.aboutElementRef);
+                    this.#smoothScrollTo(this.aboutElementRef);
                     break;
                 case 'web-projects':
-                    this._smoothScrollTo(this.webProjectsElementRef);
+                    this.#smoothScrollTo(this.webProjectsElementRef);
                     break;
                 case 'other-projects':
-                    this._smoothScrollTo(this.otherProjectsElementRef);
+                    this.#smoothScrollTo(this.otherProjectsElementRef);
                     break;
             }
         });
     }
 
-    private _smoothScrollTo(elementRef: ElementRef): void {
+    #smoothScrollTo(elementRef: ElementRef): void {
         if (!elementRef) {
             return;
         }

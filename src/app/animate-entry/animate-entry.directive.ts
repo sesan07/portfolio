@@ -10,38 +10,38 @@ export class AnimateEntryDirective implements AfterViewInit, OnDestroy {
     @Input() target?: HTMLElement;
     @Input() delay?: number;
 
-    private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
-    private _renderer = inject(Renderer2);
-    private _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private _observer!: IntersectionObserver;
+    #elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+    #renderer = inject(Renderer2);
+    #isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    #observer!: IntersectionObserver;
 
     ngAfterViewInit(): void {
-        if (!this._isBrowser) {
+        if (!this.#isBrowser) {
             return;
         }
 
-        this._renderer.addClass(this._elementRef.nativeElement, 'hidden');
-        this._observer = new IntersectionObserver(
+        this.#renderer.addClass(this.#elementRef.nativeElement, 'hidden');
+        this.#observer = new IntersectionObserver(
             entries => {
                 if (entries[0].isIntersecting) {
                     setTimeout(() => {
-                        this._renderer.removeClass(this._elementRef.nativeElement, 'hidden');
-                        this._renderer.addClass(this._elementRef.nativeElement, this.animation);
+                        this.#renderer.removeClass(this.#elementRef.nativeElement, 'hidden');
+                        this.#renderer.addClass(this.#elementRef.nativeElement, this.animation);
                     }, this.delay);
 
-                    this._observer.disconnect();
+                    this.#observer.disconnect();
                 }
             },
             { threshold: 0.2 }
         );
 
-        this._observer.observe(this.target ?? this._elementRef.nativeElement);
+        this.#observer.observe(this.target ?? this.#elementRef.nativeElement);
     }
 
     ngOnDestroy(): void {
-        if (!this._isBrowser) {
+        if (!this.#isBrowser) {
             return;
         }
-        this._observer.disconnect();
+        this.#observer.disconnect();
     }
 }

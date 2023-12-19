@@ -10,26 +10,26 @@ export class ProjectImageDirective implements OnInit {
     @Input({ required: true }) imgWidthPairs!: [number, number][];
     @Input({ required: true }) defaultImgWidth!: number;
 
-    private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
-    private _renderer = inject(Renderer2);
+    #elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+    #renderer = inject(Renderer2);
 
     ngOnInit(): void {
-        this._renderer.setAttribute(this._elementRef.nativeElement, 'src', this._getImgSrcUrl(this.defaultImgWidth));
-        this._renderer.setAttribute(this._elementRef.nativeElement, 'srcset', this._getImgSrcSet());
-        this._renderer.setAttribute(this._elementRef.nativeElement, 'sizes', this._getImgSizes());
+        this.#renderer.setAttribute(this.#elementRef.nativeElement, 'src', this.#getImgSrcUrl(this.defaultImgWidth));
+        this.#renderer.setAttribute(this.#elementRef.nativeElement, 'srcset', this.#getImgSrcSet());
+        this.#renderer.setAttribute(this.#elementRef.nativeElement, 'sizes', this.#getImgSizes());
     }
 
-    private _getImgSrcUrl(width: number): string {
+    #getImgSrcUrl(width: number): string {
         return `${environment.cloudinaryURL}/w_${width}/${this.imgSrc}.webp`;
     }
-    private _getImgSrcSet(): string {
+    #getImgSrcSet(): string {
         const imgWidths: number[] = this.imgWidthPairs.map(([, w]) => w);
         return imgWidths
-            .map(width => `${this._getImgSrcUrl(width)} ${width}w`)
-            .concat(this._getImgSrcUrl(this.defaultImgWidth))
+            .map(width => `${this.#getImgSrcUrl(width)} ${width}w`)
+            .concat(this.#getImgSrcUrl(this.defaultImgWidth))
             .join(', ');
     }
-    private _getImgSizes(): string {
+    #getImgSizes(): string {
         return this.imgWidthPairs
             .map(([mw, w]) => `(max-width: ${mw}px) ${w}px`)
             .concat(`${this.defaultImgWidth}px`)
