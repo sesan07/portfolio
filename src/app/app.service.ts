@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, Signal, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -9,8 +10,8 @@ import { Badge, Project, ProjectResponse } from './app.types';
     providedIn: 'root',
 })
 export class AppService {
-    webProjects = signal<Project[]>([]);
-    otherProjects = signal<Project[]>([]);
+    webProjects: Signal<Project[] | undefined>;
+    otherProjects: Signal<Project[] | undefined>;
 
     private _http = inject(HttpClient);
     private readonly _projectFields: string[] = [
@@ -25,8 +26,8 @@ export class AppService {
     ];
 
     constructor() {
-        this.getProjects$('web').subscribe(p => this.webProjects.set(p));
-        this.getProjects$('other').subscribe(p => this.otherProjects.set(p));
+        this.webProjects = toSignal(this.getProjects$('web'));
+        this.otherProjects = toSignal(this.getProjects$('other'));
     }
 
     getProjects$(type: 'web' | 'other'): Observable<Project[]> {
