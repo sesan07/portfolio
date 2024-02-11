@@ -1,19 +1,11 @@
-<div class="stripe-pair-group">
-    @for (stripe of [].constructor(numStripes); track stripe) {
-        <span>
-            <span class="stripe stripe-accent"></span>
-            <span class="stripe stripe-primary"></span>
-        </span>
-    }
-</div>
-<div class="title-content">
-    <ng-content />
-</div>
-<div class="stripe-pair-group">
-    @for (stripe of [].constructor(numStripes); track stripe) {
-        <span>
-            <span class="stripe stripe-accent"></span>
-            <span class="stripe stripe-primary"></span>
-        </span>
-    }
-</div>
+<ng-container *ngTemplateOutlet="stripeGroup" />
+<ng-content />
+<ng-container *ngTemplateOutlet="stripeGroup" />
+
+<ng-template #stripeGroup>
+    <span class="stripe-group">
+        @for (stripe of [].constructor(numStripes); track stripe) {
+            <span class="stripe"></span>
+        }
+    </span>
+</ng-template>

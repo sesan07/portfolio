@@ -3,34 +3,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 16px;
     white-space: nowrap;
 }
 
-.title-content {
-    padding: 0;
-}
-
-.stripe-pair-group {
-    flex-grow: 0;
-    display: flex;
-    column-gap: 5px;
+.stripe-group {
+    display: inline-flex;
+    column-gap: 16px;
 }
 
 .stripe {
     vertical-align: middle;
     display: inline-block;
-    height: 20%;
     transform: skewX(-45deg);
-}
-
-.stripe-accent {
-    width: 8px;
-    background-color: var(--accent);
-}
-
-.stripe-primary {
+    height: 10px;
     width: 20px;
     background-color: var(--primary);
+    box-shadow: -8px 0 var(--accent);
 }
 
 /* Extra small devices (phones, 600px and down) xs */
@@ -40,24 +29,25 @@
 @media only screen and (min-width: 600px) {
     :host {
         flex-direction: row;
-    }
-
-    .title-content {
-        padding: 0 20px;
+        column-gap: 32px;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) m */
-//@media only screen and (min-width: 768px) {...}
+@media only screen and (min-width: 768px) {
+    :host {
+        column-gap: 48px;
+    }
+
+    .stripe {
+        height: 20px;
+    }
+}
 
 /* Large devices (laptops/desktops, 992px and up) l */
 @media only screen and (min-width: 992px) {
-    .title-content {
-        padding: 0 40px;
-    }
-
-    .stripe-pair-group {
-        column-gap: 20px;
+    .stripe-group {
+        column-gap: 28px;
     }
 }
 

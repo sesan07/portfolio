@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
@@ -6,6 +7,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     styleUrl: './title.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
+    imports: [NgTemplateOutlet],
 })
 export class TitleComponent {
     @Input() numStripes: number = 3;
