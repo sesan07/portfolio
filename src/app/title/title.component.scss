@@ -31,6 +31,11 @@
         flex-direction: row;
         column-gap: 32px;
     }
+
+    .stripe.invert {
+        transform: skewX(45deg);
+        box-shadow: 8px 0 var(--accent);
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) m */

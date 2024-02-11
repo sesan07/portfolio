@@ -1,11 +1,17 @@
 <ng-container *ngTemplateOutlet="stripeGroup" />
 <ng-content />
-<ng-container *ngTemplateOutlet="stripeGroup" />
+<ng-container *ngTemplateOutlet="stripeGroup; context: { invert: true }" />
 
-<ng-template #stripeGroup>
+<ng-template
+    #stripeGroup
+    let-invert="invert"
+>
     <span class="stripe-group">
         @for (stripe of [].constructor(numStripes); track stripe) {
-            <span class="stripe"></span>
+            <span
+                class="stripe"
+                [class.invert]="invert"
+            ></span>
         }
     </span>
 </ng-template>
