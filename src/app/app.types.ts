@@ -39,9 +39,14 @@ export interface Project {
     year: number;
 }
 
-export interface AppState {
-    projects: {
-        web: Project[];
-        other: Project[];
-    };
+export interface IntroductionResponse {
+    description: string;
+    github_link: string;
+    resume_link: string;
+}
+
+export interface Introduction {
+    description: string;
+    githubLink: string;
+    resumeLink: string;
 }

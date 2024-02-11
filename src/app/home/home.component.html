@@ -4,11 +4,12 @@
 >
     <app-title class="main-title">Samuel Esan</app-title>
     <app-card
+        *ngIf="appService.introduction() as introduction"
         class="about-section-content"
         cardTitle="About Me"
-        [description]="description"
-        [githubLink]="githubLink"
-        [resumeLink]="resumeLink"
+        [description]="introduction.description"
+        [githubLink]="introduction.githubLink"
+        [resumeLink]="introduction.resumeLink"
     />
 </section>
 

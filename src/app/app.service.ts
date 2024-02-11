@@ -4,12 +4,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Badge, Project, ProjectResponse } from './app.types';
+import { Badge, Introduction, IntroductionResponse, Project, ProjectResponse } from './app.types';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AppService {
+    introduction: Signal<Introduction | undefined>;
     webProjects: Signal<Project[] | undefined>;
     otherProjects: Signal<Project[] | undefined>;
 
@@ -26,11 +27,17 @@ export class AppService {
     ];
 
     constructor() {
-        this.webProjects = toSignal(this.getProjects$('web'));
-        this.otherProjects = toSignal(this.getProjects$('other'));
+        this.introduction = toSignal(this.#getIntroduction$());
+        this.webProjects = toSignal(this.#getProjects$('web'));
+        this.otherProjects = toSignal(this.#getProjects$('other'));
     }
 
-    getProjects$(type: 'web' | 'other'): Observable<Project[]> {
+    #getIntroduction$(): Observable<Introduction> {
+        const url: string = `${environment.cmsUrl}/items/introduction`;
+        return this.#http.get<{ data: IntroductionResponse }>(url).pipe(map(({ data }) => this.#mapIntroduction(data)));
+    }
+
+    #getProjects$(type: 'web' | 'other'): Observable<Project[]> {
         const url: string = `${environment.cmsUrl}/items/project`;
         return this.#http
             .get<{ data: ProjectResponse[] }>(url, {
@@ -41,6 +48,12 @@ export class AppService {
             })
             .pipe(map(({ data }) => data.map(this.#mapProject)));
     }
+
+    #mapIntroduction = (res: IntroductionResponse): Introduction => ({
+        description: res.description,
+        githubLink: res.github_link,
+        resumeLink: res.resume_link,
+    });
 
     #mapProject = (res: ProjectResponse): Project => ({
         name: res.name,
