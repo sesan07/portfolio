@@ -4,63 +4,65 @@
     <div class="diagonal diagonal-top-right"></div>
 </div>
 @if (imageSrc) {
-<div class="card-image-wrapper">
-    <img
-        class="project-image"
-        appProjectImage
-        [imgSrc]="imageSrc"
-        [imgWidthPairs]="imgWidthPairs"
-        [defaultImgWidth]="defaultImgWidth"
-        [alt]="cardTitle + ' Image'"
-        loading="lazy"
-    />
-</div>
+    <div class="card-image-wrapper">
+        <img
+            class="project-image"
+            appProjectImage
+            [imgSrc]="imageSrc"
+            [imgWidthPairs]="imgWidthPairs"
+            [defaultImgWidth]="defaultImgWidth"
+            [alt]="cardTitle + ' Image'"
+            loading="lazy"
+        />
+    </div>
 }
 <div class="card-content">
     <p class="card-description">{{ description }}</p>
     @if (githubLink || openLink || resumeLink) {
-    <div class="card-links">
-        @if (githubLink) {
-        <a
-            class="card-link"
-            target="_blank"
-            [href]="githubLink"
-        >
-            <img
-                class="card-link-image"
-                [src]="getIcon('Github')"
-                alt="Github Icon"
-            />
-            <span class="card-link-text">Github</span>
-        </a>
-        } @if (openLink) {
-        <a
-            class="card-link"
-            target="_blank"
-            [href]="openLink"
-        >
-            <img
-                class="card-link-image"
-                [src]="getIcon('Link')"
-                alt="Project Link Icon"
-            />
-            <span class="card-link-text">Open</span>
-        </a>
-        } @if (resumeLink) {
-        <a
-            class="card-link"
-            target="_blank"
-            [href]="resumeLink"
-        >
-            <img
-                class="card-link-image"
-                [src]="getIcon('Resume')"
-                alt="Resume Icon"
-            />
-            <span class="card-link-text">Resume</span>
-        </a>
-        }
-    </div>
+        <div class="card-links">
+            @if (githubLink) {
+                <a
+                    class="card-link"
+                    target="_blank"
+                    [href]="githubLink"
+                >
+                    <img
+                        class="card-link-image"
+                        [src]="getIcon('Github')"
+                        alt="Github Icon"
+                    />
+                    <span class="card-link-text">Github</span>
+                </a>
+            }
+            @if (openLink) {
+                <a
+                    class="card-link"
+                    target="_blank"
+                    [href]="openLink"
+                >
+                    <img
+                        class="card-link-image"
+                        [src]="getIcon('Link')"
+                        alt="Project Link Icon"
+                    />
+                    <span class="card-link-text">Open</span>
+                </a>
+            }
+            @if (resumeLink) {
+                <a
+                    class="card-link"
+                    target="_blank"
+                    [href]="resumeLink"
+                >
+                    <img
+                        class="card-link-image"
+                        [src]="getIcon('Resume')"
+                        alt="Resume Icon"
+                    />
+                    <span class="card-link-text">Resume</span>
+                </a>
+            }
+        </div>
     }
 </div>
 <div class="card-footer-wrapper">
@@ -68,12 +70,12 @@
     <span class="card-footer">
         <span class="badge-wrapper">
             @for (badge of badges; track badge) {
-            <img
-                class="badge"
-                [src]="getIcon(badge)"
-                [title]="badge"
-                [alt]="badge + ' Icon'"
-            />
+                <img
+                    class="badge"
+                    [src]="getIcon(badge)"
+                    [title]="badge"
+                    [alt]="badge + ' Icon'"
+                />
             }
         </span>
         <span>{{ year }}</span>

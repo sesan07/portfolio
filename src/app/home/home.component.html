@@ -16,11 +16,11 @@
     <app-title class="secondary-title">Web Projects</app-title>
     <div class="main-projects-section-content">
         @for (project of appService.webProjects(); track project.name; let odd = $odd; let first = $first) {
-        <app-main-project
-            [project]="project"
-            [isInverted]="odd"
-            [lazyLoadImage]="!first"
-        />
+            <app-main-project
+                [project]="project"
+                [isInverted]="odd"
+                [lazyLoadImage]="!first"
+            />
         }
     </div>
 </section>
@@ -29,18 +29,18 @@
     <app-title class="secondary-title">Other Projects</app-title>
     <div class="other-projects-section-content">
         @for (project of appService.otherProjects(); track project) {
-        <app-card
-            class="other-project"
-            appAnimateEntry
-            animation="fade-in"
-            [cardTitle]="project.name"
-            [description]="project.summary"
-            [imageSrc]="project.cardImageSrc"
-            [badges]="project.badges"
-            [githubLink]="project.githubLink"
-            [openLink]="project.openLink"
-            [year]="project.year"
-        />
+            <app-card
+                class="other-project"
+                appAnimateEntry
+                animation="fade-in"
+                [cardTitle]="project.name"
+                [description]="project.summary"
+                [imageSrc]="project.cardImageSrc"
+                [badges]="project.badges"
+                [githubLink]="project.githubLink"
+                [openLink]="project.openLink"
+                [year]="project.year"
+            />
         }
     </div>
 </section>

@@ -36,15 +36,15 @@
         class="main-project-children"
     >
         @for (description of project.shortDescriptions; track description; let i = $index) {
-        <div
-            class="main-project-child"
-            appAnimateEntry
-            animation="slide-in-bottom"
-            [target]="descriptionsElement"
-            [delay]="i * descriptionAnimationDelay"
-        >
-            {{ description }}
-        </div>
+            <div
+                class="main-project-child"
+                appAnimateEntry
+                animation="slide-in-bottom"
+                [target]="descriptionsElement"
+                [delay]="i * descriptionAnimationDelay"
+            >
+                {{ description }}
+            </div>
         }
     </div>
 </div>
