@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Badge } from '../app.types';
+import { Badge, Link } from '../app.types';
+import { LinkButtonComponent } from '../link-button/link-button.component';
 import { ProjectImageDirective } from '../project-image/project-image.directive';
 
 @Component({
@@ -9,14 +10,12 @@ import { ProjectImageDirective } from '../project-image/project-image.directive'
     styleUrl: './card.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [ProjectImageDirective],
+    imports: [ProjectImageDirective, LinkButtonComponent],
 })
 export class CardComponent {
     @Input({ required: true }) cardTitle: string = '';
     @Input({ required: true }) description: string = '';
-    @Input() githubLink?: string;
-    @Input() openLink?: string;
-    @Input() resumeLink?: string;
+    @Input({ required: true }) links: Link[] = [];
     @Input() imageSrc?: string;
     @Input() badges?: Badge[] = [];
     @Input() year?: number;
@@ -25,5 +24,4 @@ export class CardComponent {
     readonly imgWidthPairs: [number, number][] = [[600, 700]]; // [media query max-width, img width]
 
     getIcon = (iconKey: string): string => `assets/image/${iconKey}.webp`;
-    getIconName = (iconKey: string): string => iconKey.replace(/-/g, ' ');
 }

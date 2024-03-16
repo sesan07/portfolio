@@ -15,15 +15,15 @@ export class AppService {
     otherProjects: Signal<Project[] | undefined>;
 
     #http = inject(HttpClient);
+    readonly #introductionFields: string[] = ['description', 'links.*'];
     readonly #projectFields: string[] = [
         'name',
         'summary',
         'card_image_src',
-        'github_link',
-        'open_link',
         'year',
         'descriptions.text',
         'badges.badge_id.key',
+        'links.*',
     ];
 
     constructor() {
@@ -34,7 +34,13 @@ export class AppService {
 
     #getIntroduction$(): Observable<Introduction> {
         const url: string = `${environment.cmsUrl}/items/introduction`;
-        return this.#http.get<{ data: IntroductionResponse }>(url).pipe(map(({ data }) => this.#mapIntroduction(data)));
+        return this.#http
+            .get<{ data: IntroductionResponse }>(url, {
+                params: {
+                    fields: this.#introductionFields.join(','),
+                },
+            })
+            .pipe(map(({ data }) => this.#mapIntroduction(data)));
     }
 
     #getProjects$(type: 'web' | 'other'): Observable<Project[]> {
@@ -51,8 +57,7 @@ export class AppService {
 
     #mapIntroduction = (res: IntroductionResponse): Introduction => ({
         description: res.description,
-        githubLink: res.github_link,
-        resumeLink: res.resume_link,
+        links: res.links,
     });
 
     #mapProject = (res: ProjectResponse): Project => ({
@@ -61,8 +66,7 @@ export class AppService {
         shortDescriptions: res.descriptions.map(desc => desc.text),
         cardImageSrc: res.card_image_src,
         badges: res.badges.map(badge => badge.badge_id.key as Badge),
-        githubLink: res.github_link,
-        openLink: res.open_link,
         year: res.year,
+        links: res.links,
     });
 }

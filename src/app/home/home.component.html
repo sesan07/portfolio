@@ -8,8 +8,7 @@
         class="about-section-content"
         cardTitle="About Me"
         [description]="introduction.description"
-        [githubLink]="introduction.githubLink"
-        [resumeLink]="introduction.resumeLink"
+        [links]="introduction.links"
     />
 </section>
 
@@ -38,9 +37,8 @@
                 [description]="project.summary"
                 [imageSrc]="project.cardImageSrc"
                 [badges]="project.badges"
-                [githubLink]="project.githubLink"
-                [openLink]="project.openLink"
                 [year]="project.year"
+                [links]="project.links"
             />
         }
     </div>

@@ -11,12 +11,16 @@ export enum Badge {
     UNITY = 'Unity',
 }
 
+export interface Link {
+    label: string;
+    url: string;
+    icon: 'github' | 'open' | 'resume';
+}
+
 export interface ProjectResponse {
     name: string;
     summary: string;
     card_image_src: string;
-    github_link: string;
-    open_link: string;
     year: number;
     descriptions: {
         text: string;
@@ -26,6 +30,7 @@ export interface ProjectResponse {
             key: string;
         };
     }[];
+    links: Link[];
 }
 
 export interface Project {
@@ -34,19 +39,16 @@ export interface Project {
     shortDescriptions?: string[];
     cardImageSrc: string;
     badges: Badge[];
-    githubLink?: string;
-    openLink?: string;
     year: number;
+    links: Link[];
 }
 
 export interface IntroductionResponse {
     description: string;
-    github_link: string;
-    resume_link: string;
+    links: Link[];
 }
 
 export interface Introduction {
     description: string;
-    githubLink: string;
-    resumeLink: string;
+    links: Link[];
 }
