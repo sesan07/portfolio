@@ -24,7 +24,7 @@ export function app(): Express {
     server.set('views', browserDistFolder);
 
     // Health check
-    server.get('/health', (req, res) => res.json({ status: 'OK!' }));
+    server.get('/health', (req, res) => res.send('Status: OK!'));
 
     // Example Express Rest API endpoints
     // server.get('/api/**', (req, res) => { });
