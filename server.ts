@@ -23,6 +23,9 @@ export function app(): Express {
     server.set('view engine', 'html');
     server.set('views', browserDistFolder);
 
+    // Health check
+    server.get('/health', (req, res) => res.json({ status: 'OK!' }));
+
     // Example Express Rest API endpoints
     // server.get('/api/**', (req, res) => { });
     // Serve static files from /browser
